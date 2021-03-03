@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="./Coincidencias de patrón en condiciones de búsqueda_files/Coincidencias de patrón en condiciones de búsqueda.htm">
+        <title>Coincidencias de patrón en condiciones de búsqueda</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/es-es/library/ms187489(d=default,l=es-es,v=sql.105).aspx">
+
+<meta name="NormalizedUrl" content="http://technet.microsoft.com/es-es/library/ms187489(d=default,l=es-es,v=sql.105).aspx">
+
+<meta name="VotingContextUrl" content="http://technet.microsoft.com/es-es/library/ms187489(d=default,l=es-es,v=sql.105).aspx">
+
+<meta name="MN" content="FB361397-12:45:40 PM">
+
+<meta name="Search.ShortId" content="ms187489">
+
+<meta name="Ms.Locale" content="es-es">
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./Coincidencias de patrón en condiciones de búsqueda_files/Combined.css"><script type="text/javascript" async="" src="./Coincidencias de patrón en condiciones de búsqueda_files/ms2.js"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.technet.microsoft.com", 
+	"js": "http://i2.technet.microsoft.com", 
+	"css": "http://i3.technet.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/jquery-1.8.2.min.js"></script><script type="text/javascript" src="./Coincidencias de patrón en condiciones de búsqueda_files/content196423.js"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/es-es/library/ms187489(d=default,l=es-es,v=sql.105).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'technet.microsoft.com';
+  var wt_pathlist = '/technet/';
+  var wt_paramlist = 'DCSext.mtps_techcenter';
+  var wt_siteid = 'TECHNET';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsjwb9vb00000c932fd0rjc7_5p3t';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'es-es';
+  var wtsp = '_technet_library_sqlserver_';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "f46321ee-0963-4cf4-b10e-efec11ba7b11";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/Combined.js"></script><script class="mtps-injected">try {
+var omnitureTracking = true;
+} finally { MTPS._injectNextScript_5 && MTPS._injectNextScript_5(); }</script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/Combined(1).js"></script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/SearchBox.jss"></script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/Combined(2).js"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = 'Expandir'; MTPS.LocalizedStrings.CollapseButtonTooltip = 'Contraer'; MTPS.LocalizedStrings.EnhancedExpandTooltip = 'Haga clic para expandir. Haga doble clic para expandir todo.'; MTPS.LocalizedStrings.EnhancedCollapseTooltip = 'Haga clic para contraer. Haga doble clic para contraer todo.'; MTPS.LocalizedStrings.ExpandAllButtonTooltip = 'Expandir todo'; MTPS.LocalizedStrings.CollapseAllButtonTooltip = 'Contraer todo';
+} finally { MTPS._injectNextScript_9 && MTPS._injectNextScript_9(); }</script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/Feedback.js"></script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/jquery.tmpl.min.js"></script><script class="mtps-injected" src="./Coincidencias de patrón en condiciones de búsqueda_files/Combined(3).js"></script><script src="./Coincidencias de patrón en condiciones de búsqueda_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_13 && MTPS._injectNextScript_13(); }</script><link href="./Coincidencias de patrón en condiciones de búsqueda_files/PrintView.css" rel="stylesheet" type="text/css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+        <link type="text/css" rel="stylesheet" href="./Coincidencias de patrón en condiciones de búsqueda_files/Megablade.1.css" data-do-not-move="true">
+    <div id="megabladeContainer">
+        <div id="megabladeContainerCenter">
+            <ul id="megabladeItems">
+                <li class="Logo"><a href="http://technet.microsoft.com/" title="TechNet">TechNet</a></li>
+                        <li data-value="hh326172" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Productos</a><span class="caret"></span></li>
+                        <li data-value="hh880860" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Recursos de TI</a><span class="caret"></span></li>
+                        <li data-value="hh371326" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Descargas</a><span class="caret"></span></li>
+                        <li data-value="jj837158" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Entrenamiento</a><span class="caret"></span></li>
+                        <li data-value="hh371327" class="bladeItem bladeItemWithMenu"><a class="label" href="" onclick="return false;">Soporte técnico</a><span class="caret"></span></li>
+            </ul>
+            <div class="bladeItemMenuContainer">
+                    <div data-value="hh326172" class="bladeItemMenu" style="display: none;">
+                        <div class="navpage">
+  <div>
+    <ul id="Productos">
+      <li>
+        <a href="http://technet.microsoft.com/windows">Windows</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/windowsserver">Servidor Windows</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/systemcenter">System Center</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/ie">Internet Explorer</a>
+      </li>
+    </ul>
+    <ul id="">
+      <li>
+        <a href="http://technet.microsoft.com/office">Office</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/office365">Office 365</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/exchange">Exchange Server</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="http://technet.microsoft.com/sql">SQL Server</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/sharepoint">Productos SharePoint</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/lync">Lync</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/bb421517.aspx?wt.svl=more_centers_link">Ver todos los productos »</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                    </div>
+                    <div data-value="hh880860" class="bladeItemMenu" style="display: none;">
+                        <div class="navpage">
+  <div>
+    <ul id="clave">
+      <li>
+        <a href="https://curah.microsoft.com/">Servicio de custodia Curah!</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/evalcenter">Centro de Evaluación</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/bb291022">Recursos de aprendizaje</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/hh770201">Campamentos de TI de Microsoft</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200157774">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/scriptcenter">Centro de script</a>
+      </li>
+      <li>
+        <a href="http://blogs.technet.com/serverandtools">Blogs sobre servidor y herramientas</a>
+      </li>
+      <li>
+        <a href="http://blogs.technet.com/">Blogs de TechNet</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="http://technet.microsoft.com/cc543196">Boletín de TechNet Flash</a>
+      </li>
+      <li>
+        <a href="http://gallery.technet.microsoft.com/">Galería de TechNet</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/library/default.aspx">Biblioteca de TechNet</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/magazine">TechNet Magazine</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/subscriptions">Suscripciones a TechNet</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/video">Vídeo de TechNet</a>
+      </li>
+      <li>
+        <a href="http://social.technet.microsoft.com/wiki">Wiki de TechNet</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/sysinternals">Windows Sysinternals</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/virtuallabs">Prácticas virtuales</a>
+      </li>
+    </ul>
+    <ul id="Soluciones">
+      <li>
+        <a href="http://technet.microsoft.com/bi">Business Intelligence</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/network">Redes</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/cloud/private-cloud">Nube privada</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/security">Seguridad</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/virtualization">Virtualización</a>
+      </li>
+    </ul>
+    <p>&nbsp;</p>
+  </div>
+</div>
+                    </div>
+                    <div data-value="hh371326" class="bladeItemMenu" style="display: none;">
+                        <div class="navpage">
+  <div>
+    <ul id="Actualizaciones">
+      <li>
+        <a href="http://support.microsoft.com/default.aspx?id=fh;es-es;sp&fr=0&sd=gn&ln=es-es&ct=sd&se=nona">Service Packs</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/security/bulletin">Boletines de seguridad</a>
+      </li>
+      <li>
+        <a href="http://fe1.update.microsoft.com/microsoftupdate/v6/vistadefault.aspx?ln=es-es">Microsoft Update</a>
+      </li>
+    </ul>
+    <ul id="Pruebas">
+      <li>
+        <a href="http://technet.microsoft.com/evalcenter/hh670538.aspx?wt.mc_id=TEC_108_1_8">Windows Server 2012</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200138112">System Center 2012 SP1</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/evalcenter/hh225126.aspx?wt.mc_id=TEC_93_1_8">Microsoft SQL Server 2012 SP1</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/evalcenter/hh699156.aspx?wt.mc_id=TEC_131_1_8">Windows 8 Enterprise</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/evalcenter" title="Ver todas las pruebas">Ver todas las pruebas »</a>
+      </li>
+    </ul>
+    <ul id="Sitios relacionados">
+      <li>
+        <a href="http://www.microsoft.com/es-es/download/default.aspx">Centro de descarga de Microsoft</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/evalcenter">Centro de evaluación de TechNet</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/es-es/download/driver.aspx?q=driver">Controladores</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/es-es/download/compatibility.aspx?q=compatibility">Compatibilidad y convertidores</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/sysinternals">Windows Sysinternals</a>
+      </li>
+      <li>
+        <a href="http://gallery.technet.microsoft.com/">Galería de TechNet</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                    </div>
+                    <div data-value="jj837158" class="bladeItemMenu" style="display: none;">
+                        <div class="navpage">
+  <div>
+    <ul id="Aprendizaje">
+      <li>
+        <a href="http://learning.microsoft.com/Manager/BrowseCatalog.aspx?browse=PT">Catálogo de aprendizaje</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/classlocator.aspx">Localizador de clases</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200155695">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200155696">Cursos de Windows Server 2012 gratuitos</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/training/sql-server.aspx">Cursos de SQL Server</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/training/format-online.aspx">Resumen de e-Learning</a>
+      </li>
+    </ul>
+    <ul id="Certificaciones">
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/certification/cert-overview.aspx">Resumen de certificación</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/windows-certification.aspx">MCSA: Windows 8</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/certification/cert-windowsserver.aspx">Certificación de Windows Server (MCSE)</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/certification/cert-private-cloud.aspx">Certificación de nube privada (MCSE)</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/certification/cert-sql-server.aspx">Certificación de SQL Server (MCSE)</a>
+      </li>
+    </ul>
+    <ul id="Otros recursos">
+      <li>
+        <a href="http://www.technetevents.com/">Eventos de TechNet</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/learning/en/us/offers/secondshot.aspx">Segunda oportunidad para obtener una certificación</a>
+      </li>
+      <li>
+        <a href="http://borntolearn.mslearn.net/btl/b/default.aspx">Blog Born To Learn</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/globalitcamps">Campamentos de TI</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                    </div>
+                    <div data-value="hh371327" class="bladeItemMenu" style="display: none;">
+                        <div class="navpage">
+  <div id="">
+    <ul id="Por producto">
+      <li>
+        <a href="http://support.microsoft.com/gp/gp_exchange_main">Exchange Server</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/13029">Forefront Server</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/815">Forefront Edge Security</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/14783/sl">Forefront Server Security</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/807">Internet Explorer</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/8753">Office</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/935/">SharePoint</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="http://support.microsoft.com/ph/1044">Servidor SQL</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/16340/">System Center</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/1163">para empresas de</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/1173">Windows XP</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/11732">Windows Vista</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/ph/14019">Windows 7</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/find-solutions/windows/windows-8/">Windows 8</a>
+      </li>
+    </ul>
+    <ul id="Otros vínculos">
+      <li>
+        <a href="https://premier.microsoft.com/">Microsoft Premier Online</a>
+      </li>
+      <li>
+        <a href="http://fixitcenter.support.microsoft.com/Portal">Centro Microsoft Fix It</a>
+      </li>
+      <li>
+        <a href="http://social.technet.microsoft.com/Forums/es-es/categories/">Foros de TechNet</a>
+      </li>
+      <li>
+        <a href="http://social.msdn.microsoft.com/Forums/es-es/categories/">Foros de MSDN</a>
+      </li>
+      <li>
+        <a href="http://technet.microsoft.com/security/bulletin">Boletines de seguridad y avisos</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/common/international.aspx">Soluciones de soporte técnico internacional</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/select/default.aspx?target=assistance">Registre un vale de soporte técnico</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/technet/support/ee/ee_advanced.aspx">Busque Id. de evento y códigos de error</a>
+      </li>
+    </ul>
+    <ul id=" ">
+      <li>
+        <a href="http://support.microsoft.com/">Servicio de soporte al cliente de Microsoft</a>
+      </li>
+      <li>
+        <a href="http://answers.microsoft.com/">Foros de la comunidad de Microsoft</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <div id="ux-header" class="Chrome ltr isd">
+        <div class="upperBand">
+            <a href="http://technet.microsoft.com/sqlserver/" title="SQL Server"><img alt="SQL Server" src="./Coincidencias de patrón en condiciones de búsqueda_files/BrandLogoSqlserver.png"></a>               
+            <div class="upperRight">
+                <div class="controls">
+                    
+    <form class="selectLocale" id="selectLocaleForm" action="http://technet.microsoft.com/es-es/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2ftechnet.microsoft.com%2fes-es%2flibrary%2fms187489(v%3dsql.105).aspx">
+        <a href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="Cambie su idioma">España (Español)</a>
+    </form>    
+
+
+                    <a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1386017140&rver=6.0.5276.0&wp=MCLBI&wlcxt=TechNet%24TechNet%24TechNet&wreply=http%3a%2f%2ftechnet.microsoft.com%2fes-es%2flibrary%2fms187489%2528v%3dsql.105%2529.aspx&lc=3082&id=254354&mkt=es-ES" title=" Iniciar sesión  "> Iniciar sesión  </a>
+                </div>
+                
+
+    
+
+<div class="SearchBox">
+              <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" action="http://social.technet.microsoft.com/Search" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this, this.title);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(this, this.title, &#39;SearchBoxOnFocus&#39;)" onblur="Epx.Controls.SearchBox.watermarkBlur(this, this.title, &#39;SearchBoxOnFocus&#39;)" autocomplete="off" title="Buscar SQL Server con Bing" style="color: rgb(170, 170, 170); font-style: italic;">
+            <input id="RefinementId" name="refinement" type="hidden" value="30">
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title="Buscar SQL Server con Bing"></button>
+        <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(112, 112, 112); font-family: &#39;Segoe UI&#39;, &#39;Lucida Grande&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 14px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+        
+    
+</div>
+
+            </div>
+        </div>
+        <div class="lowerBand">
+            <div class="ux-nav">
+                <div class="TocNavigation">
+   
+   <div class="toclevel1">
+          <a class="normal" href="http://technet.microsoft.com/sqlserver/bb265254" title="Inicio">Inicio</a>
+          <a class="normal" href="http://technet.microsoft.com/sqlserver/ff898410" title="2012">2012</a>
+          <a class="normal" href="http://technet.microsoft.com/sqlserver/ff398089" title="2008 R2">2008 R2</a>
+          <a class="normal" href="http://technet.microsoft.com/sqlserver/bb671410" title="2008">2008</a>
+          <a class="normal" href="http://technet.microsoft.com/sqlserver/jj901703" title="Versiones anteriores">Versiones anteriores</a>
+          <a class="active" href="http://technet.microsoft.com/library/bb545450.aspx" title="Library">Library</a>
+          <a class="normal" href="http://social.technet.microsoft.com/forums/es-es/category/sqlserver" title="Foros">Foros</a>
+
+    </div>
+  
+</div>
+            </div>
+        </div>
+    </div>
+
+        
+    <div class="printExportMenus ltr">
+        <a id="isd_printABook" href="http://technet.microsoft.com/es-es/library/export/help/?returnUrl=%2fes-es%2flibrary%2fms187489(v%3dsql.105).aspx" style="display: inline;">
+            Exportar (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://technet.microsoft.com/es-es/library/ms187489(d=printer,v=sql.105).aspx" rel="nofollow">
+            Imprimir 
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)">Contraer todo</a>
+    </div>
+
+    
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+    <div id="leftNav" style="width: 280px; max-width: 480px;">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/aa991542.aspx" id="bb126093_TechNet.10_es-es" mtpsaliasid="" mtpsassetid="7fb9516e-5f92-4e34-8e32-4307b6091e4f_TechNet.10_es-es" mtpsshortid="aa991542_MSDN.10_es-es" title="Biblioteca TechNet">Biblioteca TechNet</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/bb545450.aspx" id="bb418431_SQL.10_es-es" mtpsaliasid="" mtpsassetid="9e4042ee-b3a7-4d92-92de-595c87e2eaf2_SQL.10_es-es" mtpsshortid="bb545450_MSDN.10_es-es" title="SQL Server">SQL Server</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/dd692930(v=sql.10).aspx" id="dd692930_SQL.10_es-es" mtpsaliasid="" mtpsassetid="SQL|sqltoc|$\sqltoc.hxt@0,0,4_SQL.10_es-es" mtpsshortid="dd692930_SQL.10_es-es" title="SQL Server 2008 R2">SQL Server 2008 R2</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ee229584(v=sql.10).aspx" id="ee229584_SQL.10_es-es" mtpsaliasid="" mtpsassetid="SQL|SQLTOC|$\sqltoc.hxt@0,0,4,0_SQL.10_es-es" mtpsshortid="ee229584_SQL.10_es-es" title="Documentación del producto">Documentación del producto</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ms130214(v=sql.105).aspx" id="bb543165_SQL.105_es-es" mtpsaliasid="" mtpsassetid="674933a8-e423-4d44-a39b-2a997e2c2333_SQL.105_es-es" mtpsshortid="ms130214_SQL.105_es-es" title="Libros en pantalla de SQL Server 2008 R2">Libros en pantalla de SQL Server 2008 R2</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ms187875(v=sql.105).aspx" id="bb528141_SQL.105_es-es" mtpsaliasid="" mtpsassetid="65e2f424-1386-45a6-8912-bd053f434073_SQL.105_es-es" mtpsshortid="ms187875_SQL.105_es-es" title="Motor de base de datos">Motor de base de datos</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/bb500155(v=sql.105).aspx" id="bb528146_SQL.105_es-es" mtpsaliasid="" mtpsassetid="d9efe145-3306-4d61-bd77-e2af43e19c34_SQL.105_es-es" mtpsshortid="bb500155_SQL.105_es-es" title="Desarrollo">Desarrollo</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/bb510440(v=sql.105).aspx" id="ee227992_SQL.105_es-es" mtpsaliasid="" mtpsassetid="1e57eb1f-e645-405c-b5e1-1cd6e2f62ec6_SQL.105_es-es" mtpsshortid="bb510440_SQL.105_es-es" title="Consultar y cambiar datos">Consultar y cambiar datos</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ms181080(v=sql.105).aspx" id="ee227996_SQL.105_es-es" mtpsaliasid="" mtpsassetid="3e7adc44-d03a-4591-b3cd-2c4ce240854e_SQL.105_es-es" mtpsshortid="ms181080_SQL.105_es-es" title="Obtener acceso a los datos de base de datos y modificarlos">Obtener acceso a los datos de base de datos y modificarlos</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ms190659(v=sql.105).aspx" id="ee228038_SQL.105_es-es" mtpsaliasid="" mtpsassetid="c37528b8-6c28-489e-b079-e9e75691dd08_SQL.105_es-es" mtpsshortid="ms190659_SQL.105_es-es" title="Aspectos básicos de las consultas">Aspectos básicos de las consultas</a>            </div>
+            <div class="toclevel1" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px;">
+<a class="toc_expanded" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ms179270(v=sql.105).aspx" id="ee228043_SQL.105_es-es" mtpsaliasid="" mtpsassetid="363196d6-2fac-4123-b8d6-52f5d54b45d5_SQL.105_es-es" mtpsshortid="ms179270_SQL.105_es-es" title="Filtrar filas mediante WHERE y HAVING">Filtrar filas mediante WHERE y HAVING</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://technet.microsoft.com/es-es/library/ms191529(v=sql.105).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Condiciones de búsqueda de comparación">Condiciones de búsqueda de comparación</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://technet.microsoft.com/es-es/library/ms191311(v=sql.105).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Condiciones de búsqueda de intervalo">Condiciones de búsqueda de intervalo</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://technet.microsoft.com/es-es/library/ms191124(v=sql.105).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Condiciones de búsqueda de lista">Condiciones de búsqueda de lista</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="./Coincidencias de patrón en condiciones de búsqueda_files/Coincidencias de patrón en condiciones de búsqueda.htm" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Coincidencias de patrón en condiciones de búsqueda">Coincidencias de patrón en condiciones de búsqueda</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://technet.microsoft.com/es-es/library/ms191270(v=sql.105).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Condiciones de búsqueda de comparación con NULL">Condiciones de búsqueda de comparación con NULL</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://technet.microsoft.com/es-es/library/ms184262(v=sql.105).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Elegir filas con la cláusula HAVING">Elegir filas con la cláusula HAVING</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<a class="toc_collapsed" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#"></a><a data-tochassubtree="true" href="http://technet.microsoft.com/es-es/library/ms189119(v=sql.105).aspx" id="ee228044_SQL.105_es-es" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Operadores lógicos">Operadores lógicos</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew" style="height: 2853px;"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)" style="left: 280px; display: inline-block;">
+    <img class="cl_nav_resize_open" src="./Coincidencias de patrón en condiciones de búsqueda_files/ImageSprite.png" title="Expandir" alt="Expandir" style="">
+    <img class="cl_nav_resize_close" src="./Coincidencias de patrón en condiciones de búsqueda_files/ImageSprite.png" title="Minimizar" alt="Minimizar" style="display: none;">
+</a>
+
+
+
+    </div>
+<div id="content" class="content" style="margin-left: 280px; width: auto;">
+
+
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Coincidencias de patrón en condiciones de búsqueda</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            SQL Server 2008 R2
+        </strong>
+    </div>
+    <div id="versionclick">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div>
+        <div>
+          <a id="vsLink" href="javascript:;">
+                        Otras versiones
+                    </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./Coincidencias de patrón en condiciones de búsqueda_files/ImageSprite.png">
+        </div>
+      </div>
+      <ul id="vsPanel" style="display: none;">
+        <li>
+          <a href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.100).aspx" title="">SQL Server 2008</a>
+        </li>
+        <li>
+          <a href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.90).aspx" title="">SQL Server 2005</a>
+        </li>
+      </ul>
+    </div>
+  <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block;"></div><div id="ratingCounter" style="margin: 0px 0px 0px 13px; display: block;">
+        <span id="rcA" class="ratingText">
+            Este tema aún no ha recibido ninguna valoración <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx#feedback" title="Valorar este tema">Valorar este tema</a>
+            
+        </span>
+    </div></div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection">
+    <div id="mainBody"> <p></p> <div class="introduction"><p>La palabra clave LIKE busca valores de cadenas de caracteres, de fecha o de hora que coincidan con un patrón determinado. Para obtener más información, vea <span><a href="http://technet.microsoft.com/es-es/library/ms187752(v=sql.105).aspx">Tipos de datos (Transact-SQL)</a></span>. La palabra clave LIKE utiliza una expresión regular para contener el patrón con el que se comparan los valores. El patrón contiene la cadena de caracteres que se va a buscar, que puede estar compuesta por cualquier combinación de cuatro caracteres comodín:</p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p>Comodín</p></th><th><p>Significado</p></th></tr><tr><td><p>%</p></td><td><p>Cualquier cadena de cero o más caracteres.</p></td></tr><tr><td><p>_</p></td><td><p>Cualquier carácter.</p></td></tr><tr><td><p>[ ]</p></td><td><p>Cualquier carácter individual del intervalo (por ejemplo, [a-f]) o conjunto (por ejemplo, [abcdef]) especificado.</p></td></tr><tr><td><p>[^]</p></td><td><p>Cualquier carácter individual fuera del intervalo (por ejemplo, [^a - f]) o conjunto (por ejemplo, [^abcdef]) especificado.</p></td></tr></tbody></table></div><p>Incluya los caracteres comodín y la cadena de caracteres entre comillas simples, por ejemplo:  </p><ul><li><p>LIKE ‘Mc%’ busca todas las cadenas que comiencen con las letras "Mc" (McBadden).</p></li><li><p>LIKE ‘%inger’ busca todas las cadenas que finalicen con las letras "inger" (Ringer, Stringer).</p></li><li><p>LIKE ‘%en%’ busca todas las cadenas que contienen las letras "en" en alguna parte de la cadena (Bennet, Green, McBadden).</p></li><li><p>LIKE ‘_heryl’ busca todos los nombres de seis letras que terminan con las letras "heryl" (Cheryl, Sheryl).</p></li><li><p>LIKE ‘[CK]ars[eo]n’ busca Carsen, Karsen, Carson y Karson.</p></li><li><p>LIKE ‘[M-Z]inger’ busca todos los nombres que terminen por "inger" y que empiecen con cualquier letra entre M y Z (Ringer).</p></li><li><p>LIKE ‘M[^c]%’ busca todos los nombres que empiecen con la letra M que no tengan la letra "c" como segunda letra (MacFeather).</p></li></ul><p>En la siguiente consulta se buscan todos los números de teléfono de la tabla <span class="code">Person</span> que tengan el código de área <span class="code">415</span>:</p>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_43219259-e353-4413-b06a-0be90ad9f90e');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_43219259-e353-4413-b06a-0be90ad9f90e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT Phone
+FROM AdventureWorks2008R2.Person.Person
+WHERE Phone LIKE '415%';
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Puede usar <span class="code">NOT LIKE</span> con los mismos comodines. Para buscar todos los números de teléfono de la tabla <span class="code">Person</span> que tengan códigos de área distintos de <span class="code">415</span>, use alguna de estas consultas equivalentes:</p>
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_941801bc-cb83-4acf-b0c2-eaa41cbb8d43');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_941801bc-cb83-4acf-b0c2-eaa41cbb8d43" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT Phone
+FROM AdventureWorks2008R2.Person.Person
+WHERE Phone NOT LIKE '415%';
+
+-- Or
+
+SELECT Phone
+FROM AdventureWorks2008R2.Person.Person
+WHERE NOT Phone LIKE '415%';
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>La cláusula <span class="code">IS NOT NULL</span> se puede usar con comodines y la cláusula <span class="code">LIKE</span>. Por ejemplo, la siguiente consulta recupera los números de teléfono de la tabla <span class="code">Person</span> que empiecen por <span class="code">415</span> y cumplan la condición <span class="code">IS NOT NULL</span>:</p>
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_0c8ac7d9-1d88-448e-a263-6535dbafbc14');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_0c8ac7d9-1d88-448e-a263-6535dbafbc14" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>USE AdventureWorks2008R2;
+GO
+SELECT Phone
+FROM Person.Person
+WHERE Phone LIKE '415%' and Phone IS NOT NULL;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<div class="alert"><table><tbody><tr><th><img id="alert_caution" alt="Nota importante" src="./Coincidencias de patrón en condiciones de búsqueda_files/clear.gif" title="Nota importante" xmlns="" class="cl_IC46226"><strong>Importante</strong></th></tr><tr><td><p>El resultado de las instrucciones que contienen la palabra clave LIKE depende del orden elegido durante la instalación. Para obtener más información acerca de los efectos de diferentes ordenaciones, vea <span><a href="http://technet.microsoft.com/es-es/library/ms187582(v=sql.105).aspx">Trabajar con intercalaciones</a></span><em>.</em></p></td></tr></tbody></table></div><p>Las únicas condiciones WHERE que puede utilizar en las columnas <span><span class="input">text</span></span> son LIKE, IS NULL o PATINDEX.</p><p>Los comodines usados sin LIKE se interpretan como constantes en lugar de como un patrón; es decir, representan sus propios valores. La siguiente consulta intenta buscar cualquier número de teléfono que conste de los cuatro caracteres <span class="code">415%</span> únicamente. No encontrará números de teléfono que comiencen con <span class="code">415</span>. Para obtener más información acerca de constantes, vea <span><a href="http://technet.microsoft.com/es-es/library/ms190955(v=sql.105).aspx">Constantes (motor de base de datos)</a></span>.</p>
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_43dc4b7a-4ef2-448c-9473-dbd96993f07f');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_43dc4b7a-4ef2-448c-9473-dbd96993f07f" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT Phone
+FROM AdventureWorks2008R2.Person.Person
+WHERE Phone = '415%';
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Otra consideración importante acerca de la utilización de caracteres comodín es su efecto en el rendimiento. Si la expresión empieza con un comodín, no se puede utilizar un índice. (Exactamente igual que no sabría por dónde empezar en una guía telefónica si le dieran el nombre "%mith" en lugar de "Smith"). Un comodín en una expresión o al final de la misma no impide la utilización de un índice. (Igual que en una guía telefónica, sabría por dónde empezar a buscar si el nombre fuera '"Samuel%", tanto si los nombres Samuels y Samuelson están en la guía como si no).</p></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Haga clic para contraer. Haga doble clic para contraer todo."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Buscar caracteres comodín</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle0"></a><p>Puede buscar caracteres comodín. Hay dos formas de especificar un carácter que normalmente sería un comodín:  </p><ul><li><p>Use la palabra clave ESCAPE para definir un carácter de escape. Cuando el carácter de escape se coloca delante del comodín en un patrón, el comodín se interpreta como un carácter. Por ejemplo, para buscar la cadena <span class="code">5%</span> en cualquier parte de una cadena, use: </p>
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_7bc92071-8aa2-4798-b609-658f72c04de5');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7bc92071-8aa2-4798-b609-658f72c04de5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>WHERE ColumnA LIKE '%5/%%' ESCAPE '/'
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>En esta cláusula <span class="code">LIKE</span>, los signos de porcentaje (<span class="code">%</span>) del principio y del final se interpretan como comodines, mientras que el signo de porcentaje precedido de una barra diagonal (<span class="code">/</span>) se interpreta como el carácter %. </p></li><li><p>Use corchetes (<span class="code">[ ]</span>) para incluir el carácter comodín individualmente. Para buscar un guión (<span class="code">-</span>), en lugar de usarlo para especificar un intervalo de búsqueda, use el guión como el primer carácter de un conjunto de corchetes: </p>
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_165a5671-e186-4c59-ba44-cb6ce3f89b0a');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_165a5671-e186-4c59-ba44-cb6ce3f89b0a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>WHERE ColumnA LIKE '9[-]5'
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>En la siguiente tabla se muestra el uso de comodines incluidos entre corchetes. </p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p>Símbolo</p></th><th><p>Significado</p></th></tr><tr><td><p>LIKE ‘5[%]’</p></td><td><p>5%</p></td></tr><tr><td><p>LIKE ‘5%’</p></td><td><p>5 seguido de cualquier cadena de 0 o más caracteres</p></td></tr><tr><td><p>LIKE ‘[_]n’</p></td><td><p>_n</p></td></tr><tr><td><p>LIKE '_n'</p></td><td><p>en, in, un (etc.)</p></td></tr><tr><td><p>LIKE ‘[a-cdf]’</p></td><td><p>a, b, c, d o f</p></td></tr><tr><td><p>LIKE ‘[-acdf]’</p></td><td><p>-, a, c, d o f</p></td></tr><tr><td><p>LIKE ‘[ [ ]’</p></td><td><p>[</p></td></tr><tr><td><p>LIKE ']'</p></td><td><p>]</p></td></tr></tbody></table></div></li></ul><p>Cuando realice comparaciones de cadenas con LIKE, todos los caracteres de la cadena patrón son significativos, incluido cada espacio en blanco inicial y final. Si se solicita una comparación que devuelva todas las filas con una cadena LIKE 'abc ' (abc seguido de un espacio), no se devuelve una fila en la que el valor de esa columna sea abc (abc sin un espacio). Lo contrario, sin embargo, no es verdad. Los espacios en blanco finales de la expresión con la que se compara el patrón se omiten. Si se solicita una comparación para que devuelva todas las filas con una cadena LIKE 'abc' (abc sin un espacio), se devolverán todas las filas que comiencen con abc y tengan cero o más espacios finales en blanco.</p></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Haga clic para contraer. Haga doble clic para contraer todo."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Vea también</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="seeAlsoToggle"></a><h4 class="subHeading">Referencia</h4><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms179859(v=sql.105).aspx">LIKE (Transact-SQL)</a></span></div><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms188047(v=sql.105).aspx">WHERE (Transact-SQL)</a></span></div><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms189454(v=sql.105).aspx">% (caracteres comodín para coincidir) (Transact-SQL)</a></span></div><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms179884(v=sql.105).aspx">[ ] (caracteres comodín para búsqueda de coincidencias de Transact-SQL)</a></span></div><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms188342(v=sql.105).aspx">[^] (comodín - carácter o caracteres no coincidentes) (Transact-SQL)</a></span></div><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms174424(v=sql.105).aspx">_ (comodín, coincidir un carácter) (Transact-SQL)</a></span></div><div class="seeAlsoStyle"><span><a href="http://technet.microsoft.com/es-es/library/ms188395(v=sql.105).aspx">PATINDEX (Transact-SQL)</a></span></div></div></div></div>
+  </div>
+</div>
+
+
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://technet.microsoft.com/es-es/library/feedback/add/ms187489(v=sql.105).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="o6iSvKdDpu8yGx_H3DXJOEiM1v9_JpRwNGlAgYu8pi4xQUF6ogYfRx0Fh9EFsx034hlXl-VEjTzK3k9wJdmAUoLEUq1NaRIK17HRzvxpJHfM12UvyV5ZvOzW7cSaisIBMZxoOw2">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        ¿Te ha resultado útil?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">Sí</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">No</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">No es preciso</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">No es lo suficientemente profundo</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">Se necesitan ejemplos de código adicionales</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo204" name="chkbxNo" type="checkbox" value="204">
+                                <label for="chkbxNo204">La traducción necesita mejoras</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <input type="hidden" id="feedbackDescription" name="feedbackDescription" value="">
+                    <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+                    <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+                    <input type="hidden" id="ClientIP" name="ClientIP" value="">
+                    <input type="hidden" id="ClientOS" name="ClientOS" value="">
+                    <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+                    <input type="hidden" id="ClientTime" name="ClientTime" value="">
+                    <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;Más información...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Más información...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">Más información...</textarea>
+                </div>
+                <span class="counter">(Caracteres restantes: <span id="feedbackTextCounter">1500</span>)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx">
+                <input type="submit" id="submit" value="Enviar" title="Haga clic para Enviar comentarios" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;Más información...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Adiciones de comunidad</h2>
+                <a class="communityContentAddLink" href="http://technet.microsoft.com/es-es/library/community/add/ms187489(v=sql.105).aspx">
+                    <span class="communityContentAddButton" title="Agregar">
+                        AGREGAR
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/es-es/library/community/comments/ms187489(v=sql.105).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Mostrar:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">Heredado
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">Protegido
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="No hay miembros disponibles que coincidan con la configuración de filtro actual.">
+
+
+ 
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+   <div id="ux-footer" class="Chrome ltr">
+
+    <div class="ux-footer-clear"></div>
+    <div id="footerRight">
+        <div id="FooterLogoContainer"><div id="FooterLogo"></div></div>
+        <div id="FooterCopyright">© 2013 Microsoft</div>
+    </div>
+    <div id="footerLeft">
+        <div id="footerProfileLink">
+        <div data-fragmentname="ManageProfileLink" id="Fragment_ManageProfileLink" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/?linkid=8786243&lcid=1034" xmlns="http://www.w3.org/1999/xhtml">Administre su perfil</a>
+</div>
+        </div>
+        <div id="footerGroup">
+            <div id="LinkGroup">
+                <div id="Links1"><div data-fragmentname="FooterLinks" id="Fragment_FooterLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://technet.microsoft.com/es-es/ff715312.aspx" xmlns="http://www.w3.org/1999/xhtml">Boletín</a>
+        </li>
+        <li>
+          <div class="LinksDivider">|</div>
+          <a href="http://www.microsoft.com/spain/mssrl/default.mspx" xmlns="http://www.w3.org/1999/xhtml">Contacte con nosotros</a>
+        </li>
+        <li>
+          <div class="LinksDivider">|</div>
+          <a href="http://go.microsoft.com/fwlink/?LinkId=248681&clcid=0x0a" xmlns="http://www.w3.org/1999/xhtml">Privacidad y Cookies</a>
+        </li>
+        <li>
+          <div class="LinksDivider">|</div>
+          <a href="http://technet.microsoft.com/cc300389" xmlns="http://www.w3.org/1999/xhtml">Condiciones de Uso</a>
+        </li>
+        <li>
+          <div class="LinksDivider">|</div>
+          <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" xmlns="http://www.w3.org/1999/xhtml">Marcas registrada</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+            </div>
+            <div id="Feedback">
+                <div class="feedbackListItem">
+                    <div class="LinksDivider">|</div>
+                    <div class="LinkColumn">
+                        
+
+
+
+
+
+<div class="FooterSiteFeedBack">
+    <a id="SiteFeedbackLinkOpener" href="javascript:void(0)">
+        <span class="FeedbackButton clip20x21" id="FeedbackButton">
+            <img id="feedBackImg" class="cl_footer_feedback_icon" src="./Coincidencias de patrón en condiciones de búsqueda_files/ImageSprite.png" alt="Site Feedback">
+        </span>
+        Comentario del sitio
+    </a>
+    
+    <div id="SiteFeedbackLinkContainer" class="SiteFeedbackLinkContainer" style="display: none;">
+    <form id="siteFeedbackForm" method="post" action="http://technet.microsoft.com/es-es/library/feedback/add/ms187489(v=sql.105).aspx">
+        <div class="SiteFeedbackLinkTitleContainer">
+            <div class="SiteFeedbackLinkTitle">
+                Comentario del sitio
+            </div>
+            <div class="SiteFeedbackLinkCancel">
+                <a id="SiteFeedbackLinkCloser" href="javascript:void(0)">x</a>
+            </div>
+        </div>
+        <div class="SiteFeedbackLinkData">
+            <div class="SiteFeedbackLinkInfoText">
+                Cuéntenos su experiencia...
+            </div>
+            <div class="QuestionText">
+                ¿La página se cargó rápidamente?
+            </div>
+            <div class="AnswerText">
+                
+                <span>
+                    Sí<span>
+                        <input id="searchBox" name="searchBox" type="radio" value="1"></span></span>
+                
+                <span>
+                    No<span>
+                        <input id="searchBox" name="searchBox" type="radio" value="0"></span></span>
+                
+            </div>
+            <div class="QuestionText">
+                ¿Le gusta el diseño de la página?
+            </div>
+            <div class="AnswerText">
+                
+                <span>
+                    Sí<span>
+                        <input id="tabbedCode" name="tabbedCode" type="radio" value="1"></span></span>
+                
+                <span>
+                    No<span>
+                        <input id="tabbedCode" name="tabbedCode" type="radio" value="0"></span></span>
+                
+            </div>
+            <div class="QuestionText">
+                Más información
+            </div>
+            <div class="SiteFeedbackLinkTextAreaContainer">
+                <textarea id="feedbackText" data-maxlength="4000" name="feedbackText" cols="25" rows="5" class="SiteFeedbackLinkTextArea"></textarea>
+                
+                <input type="hidden" id="feedbackDescription" name="feedbackDescription" value="">
+                <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+                <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+                <input type="hidden" id="ClientIP" name="ClientIP" value="">
+                <input type="hidden" id="ClientOS" name="ClientOS" value="">
+                <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+                <input type="hidden" id="ClientTime" name="ClientTime" value="">
+                <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="">
+                
+            </div>
+            <div>
+                <input id="siteFeedbackSubmit" type="submit" value="Enviar" class="SiteFeedbackLinkSubmit">
+            </div>
+        </div>
+        <input type="hidden" id="returnUrl" name="returnUrl" value="http://technet.microsoft.com/es-es/library/ms187489(v=sql.105).aspx">
+    <input name="__RequestVerificationToken" type="hidden" value="Tebdr0pG1DEtXjcBpitxFWfHCdm0lZ_PiBD5h2ZBt9YNVUAwxB9nnfdxdzAW94kB5QEBAAgoj2Zss0jU6bdGbbNPriIgqaVDuN7asow9nbJdW-23sBrlxyKR-VEzT2P7Or1pXQ2"></form>
+</div>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div id="Links2"></div>
+    </div>
+</div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2013 Microsoft. Reservados todos los derechos.</div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsjwb9vb00000c932fd0rjc7_5p3t/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojstechnet.112.2o7.net/b/ss/msstonojstechnet/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="Tebdr0pG1DEtXjcBpitxFWfHCdm0lZ_PiBD5h2ZBt9YNVUAwxB9nnfdxdzAW94kB5QEBAAgoj2Zss0jU6bdGbbNPriIgqaVDuN7asow9nbJdW-23sBrlxyKR-VEzT2P7Or1pXQ2">
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.technet.microsoft.com\", \r\n\t\"js\": \"http://i2.technet.microsoft.com\", \r\n\t\"css\": \"http://i3.technet.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/es-es/library/ms187489(d=default,l=es-es,v=sql.105).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027technet.microsoft.com\u0027;\n  var wt_pathlist = \u0027/technet/\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_techcenter\u0027;\n  var wt_siteid = \u0027TECHNET\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsjwb9vb00000c932fd0rjc7_5p3t\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027es-es\u0027;\n  var wtsp = \u0027_technet_library_sqlserver_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"f46321ee-0963-4cf4-b10e-efec11ba7b11\";\n/**/" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_TechNet;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/TechNet:2\u0026amp;hashKey=B65E5B4EF35DA5A8FC7F06659D489B60" },
+	{ txt: "var omnitureTracking = true;" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:megablade.1,1:SearchBox;/Areas/Epx/Themes/Shared/Content:0,/Areas/Epx/Themes/Base/Content:1\u0026amp;hashKey=CF0B15ED75B23EF8A5427FD5B1B99B2D" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=TechNet\u0026loc=es-es\u0026Refinement=30\u0026watermark=SQL%20Server\u0026focusOnInit=false\u0026iroot=sqlserver" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize,2:FeedbackCounter;/Areas/Epx/Themes/Base/Content:0,/Areas/Epx/Library/Content:1,/Areas/Epx/Shared/Content:2\u0026amp;hashKey=08F7432882870FC3FD6BE02CACC8BD13" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expandir\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Contraer\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027Haga clic para expandir. Haga doble clic para expandir todo.\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027Haga clic para contraer. Haga doble clic para contraer todo.\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027Expandir todo\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027Contraer todo\u0027;" },
+	{ url: "http://i2.technet.microsoft.com/Areas/Epx/Shared/Content/Feedback.js" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.technet.microsoft.com/Combined.js?resources=0:CommunityContent,1:LibraryMemberFilter,0:SiteFeedbackLink,0:CodeSnippet,0:TopicNotInScope,0:CollapsibleArea,0:VersionSelector,0:SurveyBroker;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Library/Content:1\u0026amp;hashKey=1AAF4784F3FE11FB7A9CA0645B394520" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<img src="./Coincidencias de patrón en condiciones de búsqueda_files/saved_resource" height="0" width="0"><script src="./Coincidencias de patrón en condiciones de búsqueda_files/broker-config.js"></script><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="./Coincidencias de patrón en condiciones de búsqueda_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>
